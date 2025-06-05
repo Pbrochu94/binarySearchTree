@@ -8,26 +8,28 @@ class Node {
 
 class Tree {
   constructor(array) {
-    this.array = array;
-    this.root = null;
+    this.root = this.buildTree(array);
   }
-}
-
-function buildTree(array) {
-  for (let i = 0; i < array.length - 1; i++) {
-    //remove dupes in array
-    for (let x = array.length - 1; x > i; x--) {
-      if (array[i] === array[x]) {
-        array.splice(array[x], 1);
+  buildTree() {
+    for (let i = 0; i < array.length - 1; i++) {
+      //remove dupes in array
+      for (let x = array.length - 1; x > i; x--) {
+        if (array[i] === array[x]) {
+          array.splice(array[x], 1);
+        }
       }
     }
-  }
-  array.sort((a, b) => {
-    //sort array in order
-    return a - b;
-  });
+    array.sort((a, b) => {
+      //sort array in order
+      return a - b;
+    });
+    let root = Math.ceil(array.length / 2);
+    console.log(array[root]);
+    //create a new Tree var(root)
+    //loop through the array and turn value into nodes
 
-  return array;
+    return array;
+  }
 }
 
 //Test------------------
